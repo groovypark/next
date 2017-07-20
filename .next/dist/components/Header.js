@@ -42,7 +42,7 @@ var Header = function Header() {
             fileName: _jsxFileName,
             lineNumber: 10
         }
-    }, '\uC18C\uAC1C')), _react2.default.createElement(_link2.default, { href: '/ssr-test', __source: {
+    }, '\uC18C\uAC1C')), _react2.default.createElement(_link2.default, { prefetch: true, href: '/ssr-test', __source: {
             fileName: _jsxFileName,
             lineNumber: 11
         }

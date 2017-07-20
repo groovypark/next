@@ -40,6 +40,10 @@ var _Layout = require('../components/Layout');
 
 var _Layout2 = _interopRequireDefault(_Layout);
 
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = 'C:\\Users\\soobi\\Workspace\\typescript\\next\\pages\\ssr-test.js?entry';
@@ -57,27 +61,48 @@ var SSRTest = function (_React$Component) {
     (0, _createClass3.default)(SSRTest, [{
         key: 'render',
         value: function render() {
+            var users = this.props.users;
+
+            var userList = users.map(function (user) {
+                return _react2.default.createElement('li', { key: user.id, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 16
+                    }
+                }, user.username);
+            });
+
             return _react2.default.createElement(_Layout2.default, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 12
+                    lineNumber: 20
                 }
-            }, this.props.from, ' \uC5D0\uC11C \uC2E4\uD589\uC774 \uB418\uC5C8\uC5B4\uC694.');
+            }, _react2.default.createElement('ul', {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 21
+                }
+            }, userList));
         }
     }], [{
         key: 'getInitialProps',
         value: function () {
             var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(_ref) {
                 var req = _ref.req;
+                var response;
                 return _regenerator2.default.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                return _context.abrupt('return', req ? { from: 'server' // 서버에서 실행 할 시
-                                } : { from: 'client ' // 클라이언트에서 실행 할 시
+                                _context.next = 2;
+                                return _axios2.default.get('https://jsonplaceholder.typicode.com/users');
+
+                            case 2:
+                                response = _context.sent;
+                                return _context.abrupt('return', {
+                                    users: response.data
                                 });
 
-                            case 1:
+                            case 4:
                             case 'end':
                                 return _context.stop();
                         }
